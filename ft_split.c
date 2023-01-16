@@ -6,7 +6,7 @@
 /*   By: yiwong <yiwong@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:32:04 by yiwong            #+#    #+#             */
-/*   Updated: 2023/01/14 19:56:57 by yiwong           ###   ########.fr       */
+/*   Updated: 2023/01/16 17:49:07 by yiwong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_splen(char *s, char c)
 	int	i;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] != c && s[i])
 		i++;
 	return (i);
 }
@@ -34,15 +34,14 @@ int	ft_split_count(char *s, char c)
 		if (s[i] == c)
 		{
 			while (s[i] == c)
-			i++;
+				i ++;
 		}
 		else
 		{
-			while (s[i] != c)
-				i++;
-			scount++;
+			while (s[i] != c && s[i])
+				i ++;
+			scount ++;
 		}
-		i++;
 	}
 	return (scount);
 }
@@ -57,7 +56,7 @@ char	**ft_split(char const *s, char c)
 
 	str = (char *)s;
 	scount = ft_split_count(str, c);
-	r = (char **)malloc(sizeof(char*) * (scount + 1));
+	r = (char **)malloc(sizeof(char *) * (scount + 1));
 	if (!r)
 		return (NULL);
 	i = 0;
