@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -18,8 +18,7 @@ AR = ar rcs
 
 DEPS = libft.h
 
-SRC = ft_is*.c \
-		ft_is*.c \
+SRC =	ft_is*.c \
 		ft_to*.c \
 		ft_str*.c \
 		ft_mem*.c \
@@ -33,9 +32,9 @@ SRC = ft_is*.c \
 
 OBJ = $(SRC:.c=.o)
 
-SRC_BONUS = ft_lst*.c
+BONUS_SRC = ft_lst*.c
 
-OBJ_BONUS = $(BONUS_SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 NAME = libft.a
 
@@ -45,11 +44,12 @@ $(NAME) : $(OBJ)
 		$(CC) $(CFLAGS) -c $(SRC)
 		$(AR) $(NAME) $(OBJ)
 
-bonus : $(NAME) $(OBJ) $(OBJ_BONUS)
-		$(AR) $(NAME) $(OBJ) $(OBJ_BONUS)
+bonus : $(OBJ) $(BONUS_OBJ)
+		$(CC) $(CFLAGS) -c $(SRC) $(BONUS_SRC)
+		$(AR) $(NAME) $(OBJ) $(BONUS_OBJ)
 
 clean :
-		 rm -f $(OBJ)
+		 rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean : clean
 		 rm -f $(NAME)
