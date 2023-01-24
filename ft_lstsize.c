@@ -17,13 +17,13 @@ int	ft_lstsize(t_list *lst)
 	t_list	*current;
 	int		count;
 
-	if (!lst.new)
+	if (!lst)
 		return (0);
-	current -> next = lst;
+	current = lst;
 	count = 0;
-	while (current.next)
+	while (current)
 	{
-		current -> content = current.next;
+		current = current -> next;
 		count++;
 	}
 	return (count);
