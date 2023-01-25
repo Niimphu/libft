@@ -26,9 +26,12 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		current -> next = ft_lstnew((*f)(lst -> content));
 		if (!r -> next)
-			ft_lstdelone(&r, del)
+		{
+			ft_lstdelone(r, del);
 			return (NULL);
+		}
 		current = current -> next;
+		lst = lst -> next;
 	}
 	return (r);
 }
