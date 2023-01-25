@@ -6,7 +6,7 @@
 /*   By: yiwong <yiwong@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:53:03 by yiwong            #+#    #+#             */
-/*   Updated: 2023/01/16 17:26:13 by yiwong           ###   ########.fr       */
+/*   Updated: 2023/01/25 17:35:03 by yiwong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	slen1 = ft_strlen(s1);
 	slen2 = ft_strlen(s2);
 	r = malloc(sizeof(char) * (slen1 + slen2 + 1));
+	if (!r)
+		return (NULL);
 	ft_strlcpy(r, s1, slen1 + 1);
 	ft_strlcat(r + slen1, s2, slen2 + 1);
 	return (r);
