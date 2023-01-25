@@ -6,7 +6,7 @@
 /*   By: yiwong <yiwong@student.42wolfsburg.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:32:04 by yiwong            #+#    #+#             */
-/*   Updated: 2023/01/16 17:49:07 by yiwong           ###   ########.fr       */
+/*   Updated: 2023/01/25 17:55:15 by yiwong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ char	**ft_split(char const *s, char c)
 	char	**r;
 	char	*str;
 	int		scount;
-	int		i;
 	int		count;
 
 	str = (char *)s;
@@ -59,37 +58,19 @@ char	**ft_split(char const *s, char c)
 	r = (char **)malloc(sizeof(char *) * (scount + 1));
 	if (!r)
 		return (NULL);
-	i = 0;
 	count = 0;
 	while (count < scount)
 	{
-		if (str[i] != c)
+		if (str[0] != c)
 		{
-			r[count] = ft_substr(str, i, ft_splen(str + i, c));
-			i += ft_splen(str + i, c);
+			r[count] = ft_substr(str, 0, ft_splen(str, c));
+			if (!(r[count]))
+				return (NULL);
+			str += ft_splen(str, c);
 			count++;
 		}
-		i++;
+		str++;
 	}
 	r[scount] = NULL;
 	return (r);
 }
-
-// char	**ft_split_r(char **r, char *str, char c, int count)
-// {
-// 	int	i;
-// 	int	count;
-
-// 	i = 0;
-// 	count = 0;
-// 	while (str[i] && count <= scount)
-// 	{
-// 		if (str[i] != c)
-// 		{
-// 			r[count] = ft_substr(str, i, ft_splen(str + i, c));
-// 			i += ft_splen(str + i, c);
-// 			count++;
-// 		}
-// 		i++;
-// 	}
-// }
